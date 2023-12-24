@@ -25,16 +25,16 @@ int main() {
     int exponent;
 
     // Get user input for base number and exponent
-    std::cout << "Enter a base number: ";
-    std::cin >> base;
-    std::cout << "Enter an exponent: ";
-    std::cin >> exponent;
+    cout << "Enter a base number: ";
+    cin >> base;
+    cout << "Enter an exponent: ";
+    cin >> exponent;
 
     // Calculate the power of the base number using the function 'power'
     double result = power(base, exponent);
 
     // Display the result
-    std::cout << "The result is: " << result << std::endl;
+    cout << "The result is: " << result <<endl;
 
     return 0;
 }
