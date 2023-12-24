@@ -1,22 +1,33 @@
 #include <iostream>
-#include <string>
+#include <algorithm>
 using namespace std;
+bool isPalindrome(string str) {
+    transform(str.begin(), str.end(), str.begin(), ::tolower);
 
+    int start = 0;
+    int end = str.length() - 1;
 
-int main()
-{
-string input;
-cout << "Enter a string: ";
-cin >> input;
-string reversed = input;
-string(reversed.begin(), reversed.end());
-if (input == reversed)
-{
-cout<<"The string is a palindrome." <<endl;
+    while (start < end) {
+        if (str[start] != str[end]) {
+            return false;
+        }
+        start++;
+        end--;
+    }
+
+    return true;
 }
-else
-{
-cout<<"The string is not a palindrome." <<endl;
-}
-return 0;
+
+int main() {
+    string str;
+    cout << "Enter a string: ";
+    cin >> str;
+
+    if (isPalindrome(str)) {
+        cout << "The given string is a palindrome." << endl;
+    } else {
+        cout << "The given string is not a palindrome." << endl;
+    }
+
+    return 0;
 }
