@@ -1,66 +1,70 @@
-#include <iostream>
-#include<vector>
-#include<algorithm>
-using namespace std;
+#include <iostream>  // Include header for input/output operations
+#include <vector>    // Include header for vector operations
+#include <algorithm>  
+using namespace std;  // Bring the std namespace into scope
 
 class Student {
-    private:
-        string name;
-        int roll_number;
-        float marks;
+private:
+    string name;      // Student's name
+    int roll_number;  // Student's roll number
+    float marks;      // Student's marks
 
-    public:
-        Student(string n, int r, float m) {
-            name = n;
-            roll_number = r;
-            marks = m;
-        }
+public:
+    // Constructor to initialize student details
+    Student(string n, int r, float m) {
+        name = n;
+        roll_number = r;
+        marks = m;
+    }
 
-        void displayStudentDetails() {
-            cout << "Name: " << name << ", Roll Number: " << roll_number << ", Marks: " << marks << std::endl;
-        }
+    // Display student information
+    void displayStudentDetails() {
+        cout << "Name: " << name << ", Roll Number: " << roll_number << ", Marks: " << marks << endl;
+    }
 
-        string getName() {
-            return name;
-        }
-
-        float getMarks() {
-            return marks;
-        }
+    // Getter functions for name and marks
+    string getName() { return name; }
+    float getMarks() { return marks; }
 };
 
 class StudentRecord {
-    private:
-        vector<Student> students;
+private:
+    vector<Student> students;  // Vector to store student objects
 
-    public:
-        void addStudent(Student student) {
-            students.push_back(student);
-        }
+public:
+    // Add a student to the record
+    void addStudent(Student student) {
+        students.push_back(student);
+    }
 
-        void displayStudentDetails() {
-            for (auto &student : students) {
-                student.displayStudentDetails();
-            }
+    // Display details of all students
+    void displayStudentDetails() {
+        for (auto &student : students) {
+            student.displayStudentDetails();
         }
+    }
 
-        float calculateAverageMarks() {
-            float total_marks = 0;
-            for (auto &student : students) {
-                total_marks += student.getMarks();
-            }
-            return total_marks / students.size();
+    // Calculate the average marks of all students
+    float calculateAverageMarks() {
+        float total_marks = 0;
+        for (auto &student : students) {
+            total_marks += student.getMarks();
         }
+        return total_marks / students.size();
+    }
 };
 
 int main() {
-    StudentRecord sr;
+    StudentRecord sr;  // Create a StudentRecord object
+
+    // Add students to the record
     sr.addStudent(Student("sarthi", 1, 90));
     sr.addStudent(Student("darji", 2, 97));
     sr.addStudent(Student("sam", 3, 92));
 
+    // Display student details and average marks
     sr.displayStudentDetails();
     cout << "Average Marks: " << sr.calculateAverageMarks() << endl;
 
-    return 0;
+    return 0;  // Indicate successful program termination
 }
